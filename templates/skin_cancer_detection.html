@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCD</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 5%;
+            background-color: #f8f9fa !important;
+            color: #0e6d71;
+            box-shadow: 10px 0px 10px;
+        }
+        
+        .menu {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu li {
+            padding: 20px;
+        }
+        
+        .menu li a {
+            text-decoration: none;
+            color: #0e6d71;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .fullpage {
+            display: flex;
+            flex-direction: column;
+            /* height: 100vh; */
+        }
+        
+        .container {
+            /* color: bl; */
+            display: flex;
+            flex-wrap: wrap;
+            width: 80%;
+            align-items: center;
+            justify-content: space-around;
+            padding: 30px;
+            /* background-color: red; */
+            margin: auto;
+            margin-bottom: 100px;
+        }
+        
+        .column {
+            flex-direction: column;
+        }
+        
+        .maintain_distance {
+            height: 50px;
+        }
+        /* .container::after {
+            content: '';
+            height: 100px;
+            width: 100%;
+            background-color: #f9f9f9;
+        } */
+        
+        .main {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fullpage">
+        <header>
+            <div class="title">
+                <h1>krishi prabandak</h1>
+            </div>
+
+            <ul class="menu">
+                <li><a href="/">HOME</a> </li>
+                <li>
+                    <a href="/skin_cancer_detection">SKIN CANCER DETECTION</a>
+                </li>
+                <li><a href="/help ">HELP</a></li>
+            </ul>
+
+        </header>
+
+        <div class="main">
+
+            <!-- Centered div -->
+            <div class="container column" style="width:80%">
+                <style>
+                    .data_ {
+                        width: 60%;
+                        line-height: 1.5;
+                    }
+                    
+                    .data_ h1 {
+                        font-size: 40px;
+                        font-weight: 700;
+                        margin-bottom: 30px;
+                        text-align: center;
+                    }
+                    
+                    .data_ p {
+                        font-size: 20px;
+                        text-align: center;
+                    }
+                </style>
+                <div class="data_">
+                    <h1> Skin Cancer Detection</h1>
+                    <hr style="width: 20%;  color: black;margin:0 auto 40px auto;">
+                    <p><strong> SCD</strong> helps you in detecting cancer in skin and details about the cancer. It aims to improve skin care decisions by making skin diagnosis in a more accurate way. You are just one image and a click away for knowing all
+                        details of the skin if you have SCD website with you.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Upload section -->
+            <style>
+                .upload .button {
+                    all: unset;
+                    padding: 25px 100px;
+                    box-shadow: 5px 5px 5px;
+                    border: 1px solid;
+                    border-radius: 40px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    transform: scaleX(10);
+                    transition: all 1s;
+                }
+                
+                .upload .form input[type='submit']:hover,
+                .upload .button:hover {
+                    background-color: #aee0e2;
+                    transform: scale(1.11);
+                    cursor: pointer;
+                }
+                
+                .upload .form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                
+                .upload .form input[type='submit'] {
+                    all: unset;
+                    padding: 15px 100px;
+                    box-shadow: 5px 5px 5px;
+                    border: 1px solid;
+                    border-radius: 40px;
+                    margin-top: 60px;
+                    transition: all 1s;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            </style>
+
+            <div class="container column upload" style="margin-bottom: 20px;">
+
+                <h1>The click you have to make</h1>
+                <hr style="width: 20%;  color: black;margin:30px auto 80px auto;">
+
+                <form class="form" action="{{ url_for('skin_cancer_detection') }}" method="post" enctype="multipart/form-data">
+                    <label for="image">
+                        <h1 class="button">
+                            Upload 
+                        </h1>
+                    </label>
+                    <input type="file" name="image" id="image" hidden required>
+
+                    <input type="submit" value="Detect">
+                </form>
+
+            </div>
+
+            <!-- About species section should pop only when image is uploaded -->
+            <style>
+                .species_image_data {
+                    display: flex;
+                    width: 100%;
+                    /* align-items: center; */
+                    justify-content: space-between;
+                }
+                
+                .species_image_data .species_image {
+                    width: 35%;
+                    height: 300px;
+                    background-color: royalblue;
+                }
+                
+                .species_image_data .species_data_container {
+                    width: 60%;
+                    filter: drop-shadow(10px 10px 10px rgba(50, 50, 0, 0.5));
+                }
+                
+                .species_image_data .species_data {
+                    clip-path: polygon(0 0, 100% 0%, 90% 10%, 90% 90%, 100% 100%, 0 100%, 10% 90%, 10% 10%);
+                    background-color: white;
+                    width: 100%;
+                }
+                
+                .species_data p {
+                    padding: 0 50px;
+                    font-size: 15px;
+                    line-height: 1.7;
+                }
+                
+                .species_data ul li {
+                    font-size: 15px;
+                    line-height: 1.5;
+                }
+            </style>
+
+            <div class="container column">
+                <h1>About Skin
+                    <hr style="width: 60%;  color: black;margin:30px auto 80px auto;">
+                </h1>
+
+                <!-- Image of species and its data -->
+                <div id="species_image_data" data-type='{{result}}' class="species_image_data">
+
+                    <!-- Species image -->
+                    <div class="species_image">
+                        <img style="width: 100%;height: 100%;" src="{{url_for('static',filename='uploads/test.jpeg')}}" alt="">
+                        <!-- <img style="width: 100%;height: 100%;" src="https://media.istockphoto.com/photos/farmer-hands-take-care-and-protect-young-little-sprout-plant-in-the-picture-id1161321111?k=6&m=1161321111&s=612x612&w=0&h=qAJNDJH2DE0sCUdR8Vh7yPQXXB_vxGhkosEVtNnQYpw=" alt=""> -->
+                    </div>
+                    <!-- Species data -->
+                    <div class="species_data_container">
+                        <div class="species_data">
+                            <div class="container column" style="margin-bottom: 30px;">
+                                <h1 id="disease_type">
+                                    <hr style="width: 60%;  color: black;margin:10px auto 40px auto;">
+                                </h1>
+                                <p style="font-size: 25px;" id="disease_desc">
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{result}}
+    <script>
+        // var data={{result}}
+        species_image_data = document.getElementById('species_image_data').dataset.type
+        console.log(species_image_data)
+        disease_type = document.getElementById('disease_type')
+        disease_desc = document.getElementById('disease_desc')
+        if (species_image_data == 'malignant') {
+            disease_type.innerHTML = 'Maligant'
+            disease_desc.innerHTML = 'Malignant melanoma is a type of skin cancer that develops from the pigment-producing cells known as melanocytes. Melanomas typically occur in the skin but may rarely occur in the mouth, intestines, skin, or eye. Symptoms might include a new, unusual growth or a change in an existing mole. Melanomas can occur anywhere on the body. Treatment may involve surgery, radiation, medication, or in some cases, chemotherapy.'
+        } else {
+            disease_type.innerHTML = 'Begnin'
+            disease_desc.innerHTML = 'Benign growth of the melanocytes that are not cancerous. A mole may be a melanocytic nevus.While benign moles are usually a single shade of brown, a melanoma may have different shades of brown, tan or black. As it grows, the colors red, white or blue may also appear.'
+        }
+    </script>
+</body>
+
+</html>
